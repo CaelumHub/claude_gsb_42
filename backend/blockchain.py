@@ -418,7 +418,9 @@ class Blockchain:
         blocks = self.chain
         if len(blocks) < 2:
             return 0.0
-        start = max(1, len(blocks) - window)
+        # Skip block 1 as well: its parent is genesis, whose timestamp is a
+        # sentinel zero rather than the actual network start time.
+        start = max(2, len(blocks) - window)
         intervals = [blocks[i].elapsed_since(blocks[i - 1])
                      for i in range(start, len(blocks))]
         return sum(intervals) / len(intervals) if intervals else 0.0

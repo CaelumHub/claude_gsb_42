@@ -3,8 +3,7 @@
 import time
 
 from . import crypto
-from .config import (GENESIS_PREV_HASH, BLOCK_INTERVAL_SCALE,
-                     BLOCK_TX_COUNT_EXCLUDE_COINBASE)
+from .config import GENESIS_PREV_HASH, BLOCK_TX_COUNT_EXCLUDE_COINBASE
 from .merkle import merkle_root
 from .storage import canonical_json
 
@@ -104,8 +103,8 @@ class Block:
         return self.hash
 
     def elapsed_since(self, other):
-        """Elapsed time between ``other`` and this block, in scaled units."""
-        return (self.timestamp - other.timestamp) * BLOCK_INTERVAL_SCALE
+        """Elapsed time between ``other`` and this block, in seconds."""
+        return self.timestamp - other.timestamp
 
     def display_tx_count(self):
         """Number of transactions shown for this block in the UI."""
