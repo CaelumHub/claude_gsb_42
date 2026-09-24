@@ -419,6 +419,10 @@ class Blockchain:
         if len(blocks) < 2:
             return 0.0
         start = max(1, len(blocks) - window)
+        # The genesis block carries a sentinel timestamp of 0, so the interval
+        # between block 0 and block 1 is not a real elapsed time; skip it.
+        if start == 1 and blocks[0].timestamp == 0:
+            start = 2
         intervals = [blocks[i].elapsed_since(blocks[i - 1])
                      for i in range(start, len(blocks))]
         return sum(intervals) / len(intervals) if intervals else 0.0

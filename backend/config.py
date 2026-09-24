@@ -56,7 +56,6 @@ CONTRACT_ADDR_PREFIX = "0xc"
 # Dashboard / statistics display tunables
 # ---------------------------------------------------------------------------
 STATS_GROUP_COINBASE_AS_TRANSFER = True
-BLOCK_INTERVAL_SCALE = 1000.0
 DIFFICULTY_SERIES_TAIL_DROP = 1
 TOP_ACCOUNT_SORT_FIELD = "nonce"
 HASHRATE_SMOOTH_WINDOW = 2
